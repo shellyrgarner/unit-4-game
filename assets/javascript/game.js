@@ -10,32 +10,33 @@ var imageArr = [
     'assets/images/amethyst.jpg',
     'assets/images/pyrite.jpg',
     'assets/images/quartz.jpg',
-    'assets/images/tanzanite.jphg'];
+    'assets/images/tanzanite.jpg'];
 
 function startGame() {
 
-  
 
-//calculates random number to guess
-randNum = Math.floor(Math.random() * 101) + 19;
-$("#number-to-guess").text(randNum);
 
-//calculates random numbers for crystals
-for (var i = 0; i < 4; i++) {
+    //calculates random number to guess
+    randNum = Math.floor(Math.random() * 101) + 19;
+    $("#number-to-guess").text(randNum);
 
-     randCrysNum = Math.floor(Math.random() * 11) + 1;
-     //console.log(randCrysNum);
+    //calculates random numbers for crystals
+    for (var i = 0; i < 4; i++) {
 
-    imageCrystal = $("<img>");
-    imageCrystal.addClass("crystal-image");
-    // imageCrystal.attr("src", "assets/images/amethyst.jpg");
-    imageCrystal.attr("data-crystalvalue", randCrysNum);
-    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-    imageCrystal.css({ "background-image":"url(" + imageArr[i] + ")",
-                        "background-size":"cover"});
-    crystals.append(imageCrystal);
+        randCrysNum = Math.floor(Math.random() * 11) + 1;
+        //console.log(randCrysNum);
 
-}
+        imageCrystal = $("<img>");
+        imageCrystal.addClass("crystal-image");
+        // imageCrystal.attr("src", "assets/images/amethyst.jpg");
+        imageCrystal.attr("data-crystalvalue", randCrysNum);
+        // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+        imageCrystal.css({
+            "background-image": "url(" + imageArr[i] + ")",
+            "background-size": "cover"
+        });
+        crystals.append(imageCrystal);
+    }
 }
 
 startGame();
@@ -52,24 +53,24 @@ crystals.on("click", ".crystal-image", function () {
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     alert("New score: " + counter);
-      
+
 
     if (counter === randNum) {
         alert("You win!");
         wins++;
-        
+
         $("#wins").text(wins);
 
         restartGame();
     }
     else if (counter >= randNum) {
         alert("You lose!!");
-         losses++;
-         alert("# of losses: " + losses);
-         // console.log(losses);
+        losses++;
+        alert("# of losses: " + losses);
+        // console.log(losses);
         $("#losses").text(losses);
 
-     restartGame();
+        restartGame();
     }
 
 });
@@ -81,20 +82,20 @@ function restartGame() {
     //calculates random number to guess
     // randNum = Math.floor(Math.random() * 101) + 19;
     // $("#number-to-guess").text(randNum);
-    
+
     // //calculates random numbers for crystals
     // for (var i = 0; i < 4; i++) {
-    
+
     //      randCrysNum = Math.floor(Math.random() * 11) + 1;
     //      console.log(randCrysNum);
-    
+
     //     imageCrystal = $("<img>");
     //     imageCrystal.addClass("crystal-image");
     //     imageCrystal.attr("src", "assets/images/amethyst.jpg");
     //     imageCrystal.attr("data-crystalvalue", randCrysNum);
     //     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     //     crystals.append(imageCrystal);
-    
+
     // }
     startGame();
 }
