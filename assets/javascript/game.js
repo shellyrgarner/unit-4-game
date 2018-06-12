@@ -14,8 +14,6 @@ var imageArr = [
 
 function startGame() {
 
-
-
     //calculates random number to guess
     randNum = Math.floor(Math.random() * 101) + 19;
     $("#number-to-guess").text(randNum);
@@ -30,7 +28,6 @@ function startGame() {
         imageCrystal.addClass("crystal-image");
         // imageCrystal.attr("src", "assets/images/amethyst.jpg");
         imageCrystal.attr("data-crystalvalue", randCrysNum);
-        // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
         imageCrystal.css({
             "background-image": "url(" + imageArr[i] + ")",
             "background-size": "cover"
@@ -51,8 +48,8 @@ crystals.on("click", ".crystal-image", function () {
     console.log(counter);
     console.log(crystalValue);
 
-    // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
+    // alert("New score: " + counter);
+    $("#score").text(counter);
 
 
     if (counter === randNum) {
@@ -66,7 +63,7 @@ crystals.on("click", ".crystal-image", function () {
     else if (counter >= randNum) {
         alert("You lose!!");
         losses++;
-        alert("# of losses: " + losses);
+        //alert("# of losses: " + losses);
         // console.log(losses);
         $("#losses").text(losses);
 
@@ -79,23 +76,7 @@ function restartGame() {
 
     counter = 0;
     crystals.empty(imageCrystal);
-    //calculates random number to guess
-    // randNum = Math.floor(Math.random() * 101) + 19;
-    // $("#number-to-guess").text(randNum);
-
-    // //calculates random numbers for crystals
-    // for (var i = 0; i < 4; i++) {
-
-    //      randCrysNum = Math.floor(Math.random() * 11) + 1;
-    //      console.log(randCrysNum);
-
-    //     imageCrystal = $("<img>");
-    //     imageCrystal.addClass("crystal-image");
-    //     imageCrystal.attr("src", "assets/images/amethyst.jpg");
-    //     imageCrystal.attr("data-crystalvalue", randCrysNum);
-    //     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-    //     crystals.append(imageCrystal);
-
-    // }
+    $("#score").empty(counter);
+  
     startGame();
 }
